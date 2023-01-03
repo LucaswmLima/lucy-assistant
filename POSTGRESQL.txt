@@ -1,0 +1,101 @@
+CREATE TABLE slots (
+    id SERIAL PRIMARY KEY,
+    slot_name varchar(255) NOT NULL,
+    item_name varchar(255) NOT NULL,
+    item_quantity int NOT NULL,
+    min_item_quantity int DEFAULT 0 NOT NULL
+);
+
+
+/* CONFIGURAR GAVETA*/
+INSERT INTO slots(slot_name, item_name, item_quantity, min_item_quantity)
+VALUES ('gaveta 1', 'Lapis', 10, 5);
+
+INSERT INTO slots(slot_name, item_name, item_quantity, min_item_quantity)
+VALUES ('gaveta 2', 'Caneta', 20, 5);
+
+INSERT INTO slots(slot_name, item_name, item_quantity, min_item_quantity)
+VALUES ('gaveta 3', 'Borracha', 50, 10);
+
+INSERT INTO slots(slot_name, item_name, item_quantity, min_item_quantity)
+VALUES ('gaveta 4', 'Estojo', 5, 10);
+
+INSERT INTO slots(slot_name, item_name, item_quantity, min_item_quantity)
+VALUES ('gaveta 5', 'Mochila', 5, 10);
+
+/* ADICIONAR GAVETA */
+INSERT INTO slots(slot_name)
+VALUES ('gaveta 6');
+
+INSERT INTO slots(slot_name)
+VALUES ('gaveta 7');
+
+/* CRIAR LEMBRETE */
+INSERT INTO reminders(reminder_note,reminder_date)
+VALUES ('Comprar 5 estojos', '2022-11-22 10:30:00');
+
+INSERT INTO reminders(reminder_note,reminder_date)
+VALUES ('Comprar 10 bolsas', '2022-11-25 12:00:00');
+
+INSERT INTO reminders(reminder_note,reminder_date)
+VALUES ('Comprar 40 canetas', '2022-11-30 05:00:00');
+
+SELECT * FROM slots;
+
+/* PESQUISAR O LOCAL DE UM ITEM */
+SELECT slot_name FROM slots
+WHERE item_name = 'caneta';
+
+/* PESQUISAR QUANTIDADE DE UM ITEM */
+SELECT item_quantity FROM slots
+WHERE item_name = 'mochila';
+
+/* PESQUISA OS ITEMS QUE ESTÃO PRECISANDO SER REABASTECIDOS */
+SELECT item_name, item_quantity FROM slots
+WHERE item_quantity < min_item_quantity;
+
+/* PESQUISA OS ITEMS QUE ESTÃO EM FALTA */
+SELECT item_name, item_quantity FROM slots
+WHERE item_quantity < 0;
+
+/* ADICIONAR NOVO ITEM */
+UPDATE slots
+SET item_name = 'Giz de cera', item_quantity = 20, min_item_quantity = 10
+WHERE slot_name = 'gaveta 6';
+
+/* ADICIONAR ITEM */
+UPDATE slots
+SET item_quantity = item_quantity + 1
+WHERE item_name = 'lapis';
+
+/* TIRAR ITEM */
+UPDATE slots
+SET item_quantity = item_quantity - 1
+WHERE item_name = 'lapis';
+
+/* MUDAR QUANTIDADE MINIMA DE UM ITEM */
+UPDATE slots
+SET min_item_quantity = 10
+WHERE item_name = 'lapis';
+
+/* MUDAR NOME DE UM ITEM */
+UPDATE slots
+SET item_name = 'apontador'
+WHERE slot_name = 'gaveta 1';
+
+/* MUDAR NOME DA GAVETA */
+UPDATE slots
+SET slot_name = 'slot 1'
+WHERE slot_name = 'gaveta 1';
+
+/* DELETA UA GAVETA */
+DELETE FROM slots
+WHERE slot_name = 'slot 1';
+
+/* DELETA UM ITEM */
+UPDATE slots
+SET item_name = '', item_quantity = 0, min_item_quantity = 0
+WHERE slot_name = 'gaveta 5';
+
+SELECT * FROM slots;
+SELECT * FROM reminders;

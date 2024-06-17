@@ -18,7 +18,7 @@
   <p align="center">    
     Virtual assistant for inventory control. With full voice-activated database control functions.
     <br />
-    <a href="https://docs.google.com/document/d/1zMfK4cNfxZCeZEeUUGbOTMOE80GCUUnH/edit?usp=sharing&ouid=116667808692817560212&rtpof=true&sd=true"><strong>Explore the docs [TCC Documentation] »</strong></a>
+    <a href="https://drive.google.com/file/d/1WW85IfB66cHBu5bziHDiTRD8WY0UIOgu/view?usp=sharing"><strong>Explore the docs [TCC Documentation] »</strong></a>
     <br />
     <br />
     ·

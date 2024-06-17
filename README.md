@@ -98,7 +98,7 @@ Download and install Python and dependencies
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Execute main.py
+1. Execute lucy_assistent.py
    ```
    cd python-lucy-assistant
    python main.py
